@@ -89,5 +89,5 @@ for item in es_response:
 last_item = first_seen
 
 time_spent = time.time() - start_time
-print("{0} documents written in {1}".format(doc_count, time_spent), file=sys.stderr)
+print("{0} documents written in {1}s".format(doc_count, time_spent), file=sys.stderr)
 print("First item: {0}\nLast item: {1}".format(first_item, last_item), file=sys.stderr)
