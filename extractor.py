@@ -47,8 +47,7 @@ es_response = scan(
         ],
         "_source": [
             "metadata.title",
-            "first-seen",
-            "references"
+            "first-seen"
         ]
     },
     preserve_order=True
@@ -66,15 +65,18 @@ for item in es_response:
     title = metadata['title'][0]
     title = title.strip()
 
-    references = _source['references']
-    if not references:
-        parent_hash = None
-    else:
-        parent_hash = references[0]['parent_hash']
+    # parent_hashes = []
+    # for reference in _source['references']:
+    #     parent_hashes.append(reference['parent_hash'])
+    # references =
+    # if not references:
+    #     parent_hashes = None
+    # else:
+    #     parent_hash = references[0]['parent_hash']
 
     assert _source['first-seen']
     first_seen = _source['first-seen']
-    print(json.dumps([item['_id'], title, first_seen, parent_hash]))
+    print(json.dumps([item['_id'], title, first_seen]))
 
     doc_count += 1
 
