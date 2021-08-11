@@ -9,7 +9,7 @@ es_response = scan(
     query={
         "query": {
             "bool": {
-                "should": [
+                "must": [
                     {
                         "exists": {
                             "field": "metadata.title" # Ensure non-null
