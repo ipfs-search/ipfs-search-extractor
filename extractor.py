@@ -8,11 +8,25 @@ es_response = scan(
     index='ipfs_files_v8',
     query={
     	"query": {
-    		"exists": {
-    			"field": "metadata.title"
+    		"bool": {
+    			"should": [
+    				{
+			    		"exists": {
+			    			"field": "metadata.title" # Ensure non-null
+			    		}
+			    	},
+			    	{
+			    		"wildcard": {
+			    			"metadata.title": "?*" # Ensure not empty
+			    		}
+		    		}
+    			]
     		}
     	},
-    	"_source": ["metadata.title", "references"]
+    	"_source": [
+    		"metadata.title",
+    		"references"
+    	]
     }
 )
 
